@@ -29,6 +29,10 @@ function fetchData(url) {
   return promecita;
 }
 
+
+
+
+
 /*omito la ejecion para que se mas claro porque voy a crear una promesa con axios
 fetchData("https://swapi.dev/")
     .then((objeto)=>{
@@ -38,13 +42,38 @@ fetchData("https://swapi.dev/")
     .catch(err => console.error (err));
 */
 
-//version adicional con axios (librerias extrernas)
+//version adicional con axios (librerias externas)
 
 axios.get("https://swapi.dev/api/people/1")
     .then(respuesta => {
-        console.log(respuesta);
+        console.log(typeof(respuesta));
+
         let json =  respuesta.data;
         console.log (`El personaje es : ${json.name}`)
     })
-    .catch()
-    .finally();
+    .catch((error)=>console.log("respuesta: " + error))
+    .finally(console.log("Finde la utilizacion de axios."));
+
+
+//-------------------------------------------------------------
+
+
+const request = require('request')
+function fetchApi(url){
+  const promesa = new Promise((resolve, reject)=>{
+    request(url, {json:true},(error,resp, body)=>{
+      if(resp.statusCode === 200){
+        resolve(body);
+      }else{
+        reject("no se pudo resolver la promesa correctamente")
+      }
+    })
+  });
+  return promesa
+};
+
+//llamando la promesa
+
+fetchApi("https://swapi.dev/api/people/1")
+  .then(res => console.log(res))
+  .catch(error => console.log(error))

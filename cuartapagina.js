@@ -14,6 +14,8 @@ La URL y los datos simulados se pueden definir con una URL de API, como https://
 opcionalmente, agregue el uso de una biblioteca como Axios o Chai HTTP, 
 para recuperar correctamente los datos a través de servicios API.
 */
+
+/*
 function fetchData(url) {
   if (typeof url === "")
     return Promise.reject(`Error en la url ingresada: ${url}`);
@@ -29,7 +31,7 @@ function fetchData(url) {
   return promecita;
 }
 
-
+*/
 
 
 
@@ -44,6 +46,8 @@ fetchData("https://swapi.dev/")
 
 //version adicional con axios (librerias externas)
 
+
+/*
 axios.get("https://swapi.dev/api/people/1")
     .then(respuesta => {
         console.log(typeof(respuesta));
@@ -54,7 +58,7 @@ axios.get("https://swapi.dev/api/people/1")
     .catch((error)=>console.log("respuesta: " + error))
     .finally(console.log("Finde la utilizacion de axios."));
 
-
+*/
 //-------------------------------------------------------------
 
 
@@ -77,3 +81,10 @@ function fetchApi(url){
 fetchApi("https://swapi.dev/api/people/1")
   .then(res => console.log(res))
   .catch(error => console.log(error))
+
+
+fetchApi("https://swapi.dev/api/people/1")
+  .then(res => console.log(res.name))
+  .catch(error => console.log(error))
+
+
